@@ -1,12 +1,13 @@
 import React from 'react'
 import "../css/table.css"
+import numeral from "numeral"
 function Table({countries}) {
     return (
         <div className="table">
             {countries.map((country)=>(
                 <tr>
                     <td>{country.country}</td>
-                    <td><strong>{country.cases}</strong></td>
+                    <td><strong>{numeral(country.cases).format}</strong></td>
                 </tr>
             ))}
         </div>
