@@ -4,6 +4,7 @@ import InfoBox from "./Components/InfoBox"
 import Map from "./Components/Map"
 import Table from "./Components/Table"
 import {sortData} from "./Components/utils"
+import LineGraph from "./Components/LineGraph"
 import './App.css';
 import { Card , CardContent } from '@material-ui/core';
 
@@ -13,6 +14,7 @@ function App() {
   const [country,setCountry] = useState("worldwide");
   const [countryInfo,setCountryInfo] = useState({})
   const [tableData,setTableData] = useState([])
+  const [casesType,setCasesType] = useState("cases")
 
   useEffect(()=>{
     fetch("https://disease.sh/v3/covid-19/all")
@@ -73,7 +75,10 @@ function App() {
       </div>
       <Card className="app_right">
         <CardContent>
+          <h3>Live Case By Country</h3>
           <Table countries={tableData}/>
+          <h3>Worldwide New Cases</h3>
+          <LineGraph />
         </CardContent>
       </Card>
     </div>
