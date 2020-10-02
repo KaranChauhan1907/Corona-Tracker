@@ -2,6 +2,8 @@ import React,{useState,useEffect} from 'react';
 import Header from "./Components/Header"
 import InfoBox from "./Components/InfoBox"
 import Map from "./Components/Map"
+import Table from "./Components/Table"
+import {sortData} from "./Components/utils"
 import './App.css';
 import { Card , CardContent } from '@material-ui/core';
 
@@ -10,6 +12,7 @@ function App() {
   const [countries,setCountries] = useState([])
   const [country,setCountry] = useState("worldwide");
   const [countryInfo,setCountryInfo] = useState({})
+  const [tableData,setTableData] = useState([])
 
   useEffect(()=>{
     fetch("https://disease.sh/v3/covid-19/all")
@@ -17,7 +20,7 @@ function App() {
     .then((data)=>{
     setCountryInfo(data)
     })
-  })
+  },[])
 
   useEffect(() => {
       //async data
@@ -29,6 +32,8 @@ function App() {
                   name : country.country,
                   value : country.countryInfo.iso2,
                   }))
+              const sortedData = sortData(data)
+              setTableData(sortedData)
               setCountries(countries)
           })
       }
@@ -55,6 +60,7 @@ function App() {
     <div className="App">
       <div className="app_left">
         <Header onChange={ChangeCountry} country={country} countries={countries}/>
+        {/* {console.log(countryInfo)} */}
         <div className="app_stats">
 
           <InfoBox title="Coronavirus Cases" cases={countryInfo.todayCases} total={countryInfo.cases}/>
@@ -67,7 +73,7 @@ function App() {
       </div>
       <Card className="app_right">
         <CardContent>
-          <h2>First</h2>
+          <Table countries={tableData}/>
         </CardContent>
       </Card>
     </div>
