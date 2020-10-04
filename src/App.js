@@ -40,6 +40,7 @@ function App() {
               const countries = data.map((country)=>({
                   name : country.country,
                   value : country.countryInfo.iso2,
+                  flag : country.countryInfo.flag
                   }))
               let sortedData = sortData(data)
               setTableData(sortedData)
@@ -50,34 +51,36 @@ function App() {
       getCountriesData()
   }, [])
 
-  const ChangeCountry = async(e)=>{
-      const countrycode = e.target.value
-      const url =
-          countrycode === "worldwide"
-          ? "https://disease.sh/v3/covid-19/all"
-          :  `https://disease.sh/v3/covid-19/countries/${countrycode}`;
+  const ChangeCountry = async(e,value)=>{
+      console.log(value);
+      // const countrycode = value
+      // const url =
+      //     countrycode === "worldwide"
+      //     ? "https://disease.sh/v3/covid-19/all"
+      //     :  `https://disease.sh/v3/covid-19/countries/${countrycode}`;
 
-          await fetch(url)
-          .then((response)=>response.json())
-          .then((data)=>{
-              setCountry(countrycode)
-              setCountryInfo(data);
-              setMapZoom(4)
-              setMapCenter([data.countryInfo.lat,data.countryInfo.long])
-          })
+      //     await fetch(url)
+      //     .then((response)=>response.json())
+      //     .then((data)=>{
+      //         console.log(data.countryInfo);
+      //         setCountry(countrycode)
+      //         setCountryInfo(data);
+      //         setMapZoom(4)
+      //         setMapCenter([data.countryInfo.lat,data.countryInfo.long])
+      //     })
   }
 
 
   return (
     <div className="App">
       <div className="app_left">
-        <Header onChange={ChangeCountry} country={country} countries={countries}/>
+        <Header onChange={ChangeCountry}  countries={countries}/>
         {/* {console.log(countryInfo)} */}
         <div className="app_stats">
 
-          <InfoBox onClick={e=>setCasesType("cases")} title="Coronavirus Cases" cases={prettyPrint(countryInfo.todayCases)} total={prettyPrint(countryInfo.cases)}/>
-          <InfoBox onClick={e=>setCasesType("recovered")} title="Recovered" cases={prettyPrint(countryInfo.todayRecovered)} total={prettyPrint(countryInfo.recovered)}/>
-          <InfoBox onClick={e=>setCasesType("deaths")} title="Deaths" cases={prettyPrint(countryInfo.todayDeaths)} total={prettyPrint(countryInfo.deaths)}/>
+          <InfoBox isRed active={casesType==="cases"} onClick={e=>setCasesType("cases")} title="Coronavirus Cases" cases={prettyPrint(countryInfo.todayCases)} total={prettyPrint(countryInfo.cases)}/>
+          <InfoBox active={casesType==="recovered"}  onClick={e=>setCasesType("recovered")} title="Recovered" cases={prettyPrint(countryInfo.todayRecovered)} total={prettyPrint(countryInfo.recovered)}/>
+          <InfoBox isRed active={casesType==="deaths"}  onClick={e=>setCasesType("deaths")} title="Deaths" cases={prettyPrint(countryInfo.todayDeaths)} total={prettyPrint(countryInfo.deaths)}/>
         </div>
         <div className='app_map'>
           <Map
@@ -90,10 +93,14 @@ function App() {
       </div>
       <Card className="app_right">
         <CardContent>
+          <div className="app_table">
           <h3>Live Case By Country</h3>
           <Table countries={tableData}/>
-          <h3>Worldwide New Cases </h3>
+          </div>
+          <div className="app_graph">
+          <h3>Worldwide New {casesType}</h3>
           <LineGraph casesType= {casesType} />
+          </div>
         </CardContent>
       </Card>
     </div>

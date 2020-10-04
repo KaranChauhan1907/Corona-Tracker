@@ -9,6 +9,10 @@ body{
   align-items: center;
   margin-bottom: 20px;
   justify-content: space-between;
+  /* position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white; */
 }
 
 .App{
@@ -18,15 +22,36 @@ body{
 }
 .app_left{
   flex:0.9;
+  width:100%;
 }
 .app_stats{
   display:flex;
   justify-content: space-between;
 }
 
+.app_right{
+  display:flex;
+  flex-direction: column;
+  width:25%
+
+}
+
+.header > h1{
+  color:red;
+  font-size: 2rem;
+}
+.dropdown{
+  background-color: white;
+  width: 10rem;
+}
+
 @media (max-width: 900px ){
   .App{
     flex-direction: column;
+  }
+
+  .app_right{
+    width: 100%;
   }
 }
 
@@ -76,6 +101,7 @@ body{
 
 .infoBox{
   flex:1;
+  cursor: pointer;
 }
 .infoBox:not(:last-child){
   margin-right: 20px;
@@ -93,4 +119,24 @@ body{
   font-weight:700 !important;
   font-size:0.9rem !important;
   margin-top:15px !important;
+}
+
+.infoBox__selected{
+  border-top: 10px solid greenyellow;
+}
+
+.infoBox__red{
+  border-color: red;
+}
+.infoBox__cases__green{
+  color: greenyellow !important;
+}
+
+.app_graph{
+  width: 100%;
+  margin-top: 25px;
+}
+
+.app_map{
+  width: 100%;
 }
