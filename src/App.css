@@ -42,7 +42,7 @@ body{
 }
 .dropdown{
   background-color: white;
-  width: 12rem;
+  width: 10rem;
 }
 
 @media (max-width: 900px ){
@@ -53,6 +53,16 @@ body{
   .app_right{
     width: 100%;
   }
+
+  .dropdown{
+    margin-right: 100px;
+  }
+  .infoBox{
+    flex:1;
+    cursor: pointer;
+    
+  }
+  
 }
 
 .map{
@@ -102,6 +112,7 @@ body{
 .infoBox{
   flex:1;
   cursor: pointer;
+
 }
 .infoBox:not(:last-child){
   margin-right: 20px;

@@ -42,7 +42,8 @@ export const centerMapcolor=(countryInfo,casesType)=>
     Math.sqrt(countryInfo[casesType]) * casesTypeColors[casesType].multiplier
   }
   >
-    <Popup >
+    <Popup
+>
         <div className="info-container">
             <div className="info-flag" style={{backgroundImage:`url(${countryInfo.countryInfo.flag})`}}></div>
             <div className="info-name">{countryInfo.country}</div>
