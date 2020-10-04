@@ -30,7 +30,6 @@ function Header({onChange,countries}) {
                     }}
                 options = {countries}
                 autoHighlight
-                defaultValue={"worldwide"}
                 getOptionLabel={(option)=>option.name}
                 renderOption={(option)=>(
                     <React.Fragment>

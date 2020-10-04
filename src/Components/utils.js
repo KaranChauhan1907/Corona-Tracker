@@ -1,6 +1,6 @@
 import React from "react";
 import numeral from "numeral";
-import { Circle, Popup } from "react-leaflet";
+import { Circle, Popup ,Tooltip} from "react-leaflet";
 import "../App.css"
 
 const casesTypeColors = {
@@ -32,6 +32,28 @@ export const sortData = (data) => {
   return sortedData;
 };
 
+export const centerMapcolor=(countryInfo,casesType)=>
+  <Circle
+  center={[countryInfo.countryInfo.lat, countryInfo.countryInfo.long]}
+  color={"black"}
+  fillColor={"black"}
+  fillOpacity={0.4}
+  radius={
+    Math.sqrt(countryInfo[casesType]) * casesTypeColors[casesType].multiplier
+  }
+  >
+    <Popup >
+        <div className="info-container">
+            <div className="info-flag" style={{backgroundImage:`url(${countryInfo.countryInfo.flag})`}}></div>
+            <div className="info-name">{countryInfo.country}</div>
+            <div className="info-confirmed">Cases : {numeral(countryInfo.cases).format("0,0")}</div>
+            <div className="info-recovered">Recovered : {numeral(countryInfo.recovered).format("0,0")}</div>
+            <div className="info-deaths">Deaths : {numeral(countryInfo.deaths).format("0,0")}</div>
+        </div>
+      </Popup>
+  </Circle>
+  
+
 export const prettyPrint = (stat)=>
     stat ? `+${numeral(stat).format("0.0a")}` : "+0";
 
@@ -57,3 +79,4 @@ export const showDataOnMap = (data, casesType = "cases") =>
       </Popup>
     </Circle>
   ));
+  

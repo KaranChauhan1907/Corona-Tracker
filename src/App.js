@@ -22,6 +22,7 @@ function App() {
   })
   const [mapZoom,setMapZoom] = useState(3)
   const [mapCountries,setMapCountries] = useState([])
+  const [onecountryInfo,setOnecountryInfo] = useState(null)
 
   useEffect(()=>{
     fetch("https://disease.sh/v3/covid-19/all")
@@ -52,8 +53,8 @@ function App() {
   }, [])
 
   const ChangeCountry = async(e,value)=>{
-      console.log(value);
       const countrycode = value
+      
       const url =
           countrycode === "worldwide"
           ? "https://disease.sh/v3/covid-19/all"
@@ -62,14 +63,18 @@ function App() {
           await fetch(url)
           .then((response)=>response.json())
           .then((data)=>{
-              console.log(data.countryInfo);
+
               setCountry(countrycode)
               setCountryInfo(data);
-              setMapZoom(4)
+              setMapZoom(5)
               setMapCenter([data.countryInfo.lat,data.countryInfo.long])
-          })
+          }
+         )
+         let pop = document.getElementById("popup")
+         console.log(pop);
   }
-
+  
+  
 
   return (
     <div className="App">
@@ -85,6 +90,7 @@ function App() {
         <div className='app_map'>
           <Map
           countries={mapCountries}
+          countryInfo={countryInfo}
           casesType={casesType}
           center={mapCenter}
           zoom={mapZoom}

@@ -1,9 +1,9 @@
 import React from 'react'
 import "../App.css"
 import {Map as LeafletMap,TileLayer} from "react-leaflet"
-import { showDataOnMap } from './utils'
+import { showDataOnMap,centerMapcolor } from './utils'
 
-function Map({countries,casesType,center,zoom}) {
+function Map({countries,casesType,countryInfo,center,zoom}) {
     return (
         <div className="map">
             <LeafletMap center={center} zoom={zoom}>
@@ -12,6 +12,12 @@ function Map({countries,casesType,center,zoom}) {
                     attribution='&copy; <a href="http://osm.org/copyright";>OpenStreetMap</a> contributors'
                 />
                 {showDataOnMap(countries,casesType)}
+                {console.log(countryInfo)}
+                {/* if(countryInfo.countryInfo){
+                {centerMapcolor(countryInfo,casesType)}  
+                } */
+                    countryInfo.countryInfo && centerMapcolor(countryInfo,casesType)
+                }
             </LeafletMap>
         </div>
     )
