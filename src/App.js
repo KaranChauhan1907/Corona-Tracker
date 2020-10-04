@@ -53,21 +53,21 @@ function App() {
 
   const ChangeCountry = async(e,value)=>{
       console.log(value);
-      // const countrycode = value
-      // const url =
-      //     countrycode === "worldwide"
-      //     ? "https://disease.sh/v3/covid-19/all"
-      //     :  `https://disease.sh/v3/covid-19/countries/${countrycode}`;
+      const countrycode = value
+      const url =
+          countrycode === "worldwide"
+          ? "https://disease.sh/v3/covid-19/all"
+          :  `https://disease.sh/v3/covid-19/countries/${countrycode}`;
 
-      //     await fetch(url)
-      //     .then((response)=>response.json())
-      //     .then((data)=>{
-      //         console.log(data.countryInfo);
-      //         setCountry(countrycode)
-      //         setCountryInfo(data);
-      //         setMapZoom(4)
-      //         setMapCenter([data.countryInfo.lat,data.countryInfo.long])
-      //     })
+          await fetch(url)
+          .then((response)=>response.json())
+          .then((data)=>{
+              console.log(data.countryInfo);
+              setCountry(countrycode)
+              setCountryInfo(data);
+              setMapZoom(4)
+              setMapCenter([data.countryInfo.lat,data.countryInfo.long])
+          })
   }
 
 

@@ -24,8 +24,13 @@ function Header({onChange,countries}) {
             */}
             
             <Autocomplete className="dropdown"
-                onChange={(event,value)=>onChange(event,value.value)} 
+                onChange={(event,value)=>{
+                    if (value) {
+                        onChange(event,value.value)}
+                    }}
                 options = {countries}
+                autoHighlight
+                defaultValue={"worldwide"}
                 getOptionLabel={(option)=>option.name}
                 renderOption={(option)=>(
                     <React.Fragment>

@@ -42,7 +42,7 @@ body{
 }
 .dropdown{
   background-color: white;
-  width: 10rem;
+  width: 12rem;
 }
 
 @media (max-width: 900px ){
