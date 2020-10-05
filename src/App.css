@@ -51,18 +51,44 @@ body{
   }
 
   .app_right{
+    margin-top: 20px;
     width: 100%;
   }
 
   .dropdown{
     margin-right: 100px;
   }
+  .app_stats{
+    flex-direction: column;
+    /* cursor: pointer; */
+  }
   .infoBox{
-    flex:1;
-    cursor: pointer;
-    
+    width: 200px;
+    align-content: center;
+    margin-top: 20px;
+  }
+
+  .infoBox__selected{
+    border-top: 0px!important;
+    border-left: 10px solid greenyellow;
+  }
+
+  .map{
+
+    height: 350px !important;
   }
   
+  /* .popup__size{
+    
+  } */
+  .table{
+    height: 250px !important;
+  }
+
+  .app_graph{
+    margin-top: 35px !important;
+  }
+
 }
 
 .map{

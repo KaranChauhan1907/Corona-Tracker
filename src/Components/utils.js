@@ -42,8 +42,7 @@ export const centerMapcolor=(countryInfo,casesType)=>
     Math.sqrt(countryInfo[casesType]) * casesTypeColors[casesType].multiplier
   }
   >
-    <Popup
->
+    <Popup className="popup__size">
         <div className="info-container">
             <div className="info-flag" style={{backgroundImage:`url(${countryInfo.countryInfo.flag})`}}></div>
             <div className="info-name">{countryInfo.country}</div>
@@ -69,7 +68,7 @@ export const showDataOnMap = (data, casesType = "cases") =>
         Math.sqrt(country[casesType]) * casesTypeColors[casesType].multiplier
       }
     >
-      <Popup>
+      <Popup className="popup__size">
         <div className="info-container">
             <div className="info-flag" style={{backgroundImage:`url(${country.countryInfo.flag})`}}></div>
             <div className="info-name">{country.country}</div>

@@ -13,9 +13,7 @@ function Map({countries,casesType,countryInfo,center,zoom}) {
                 />
                 {showDataOnMap(countries,casesType)}
                 {console.log(countryInfo)}
-                {/* if(countryInfo.countryInfo){
-                {centerMapcolor(countryInfo,casesType)}  
-                } */
+                {
                     countryInfo.countryInfo &&  centerMapcolor(countryInfo,casesType) 
                 }
             </LeafletMap>

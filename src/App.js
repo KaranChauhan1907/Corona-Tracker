@@ -66,7 +66,7 @@ function App() {
 
               setCountry(countrycode)
               setCountryInfo(data);
-              setMapZoom(5)
+              setMapZoom(4)
               setMapCenter([data.countryInfo.lat,data.countryInfo.long])
           }
          )
