@@ -45,6 +45,10 @@ body{
   width: 10rem;
 }
 
+/* .input__search{
+  height: 100px;
+} */
+
 @media (max-width: 900px ){
   .App{
     flex-direction: column;

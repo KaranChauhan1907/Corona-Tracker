@@ -37,9 +37,9 @@ function Header({onChange,countries}) {
                     </React.Fragment>
                 )}
             renderInput={(params)=>(
-                <TextField
+                <TextField className="input__search"
                 {...params}
-                label="choose a country"
+                label="World Wide"
                 variant="outlined"
                 />
             )}

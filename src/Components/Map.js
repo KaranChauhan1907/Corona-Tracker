@@ -11,11 +11,12 @@ function Map({countries,casesType,countryInfo,center,zoom}) {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution='&copy; <a href="http://osm.org/copyright";>OpenStreetMap</a> contributors'
                 />
-                {showDataOnMap(countries,casesType)}
+                 {showDataOnMap(countries,casesType)}
                 {console.log(countryInfo)}
                 {
                     countryInfo.countryInfo &&  centerMapcolor(countryInfo,casesType) 
                 }
+                
             </LeafletMap>
         </div>
     )

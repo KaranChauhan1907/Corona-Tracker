@@ -22,7 +22,7 @@ function App() {
   })
   const [mapZoom,setMapZoom] = useState(3)
   const [mapCountries,setMapCountries] = useState([])
-  const [onecountryInfo,setOnecountryInfo] = useState(null)
+  // const [onecountryInfo,setOnecountryInfo] = useState(null)
 
   useEffect(()=>{
     fetch("https://disease.sh/v3/covid-19/all")
@@ -47,6 +47,7 @@ function App() {
               setTableData(sortedData)
               setCountries(countries)
               setMapCountries(data)
+              
           })
       }
       getCountriesData()
@@ -66,12 +67,10 @@ function App() {
 
               setCountry(countrycode)
               setCountryInfo(data);
-              setMapZoom(4)
-              setMapCenter([data.countryInfo.lat,data.countryInfo.long])
+              setMapCenter([data.countryInfo.lat,data.countryInfo.long]);
+              setMapZoom(4);
           }
          )
-         let pop = document.getElementById("popup")
-         console.log(pop);
   }
   
   
