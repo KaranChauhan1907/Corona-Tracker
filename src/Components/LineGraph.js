@@ -65,8 +65,22 @@ const buildChartData = (data,casesType)=>{
 
 function LineGraph({casesType="cases"}) {
     const [data,setData] = useState({});
+    const [bgcolor,setBGcolor] = useState()
+    const [bordercolor,setBordercolor] = useState()
 
     useEffect(()=>{
+      if (casesType == "cases"){
+        setBGcolor("a5a5a5")
+        setBordercolor("626663")
+      }
+      else if(casesType=="recovered"){
+          setBGcolor("ADFF2F")
+          setBordercolor("38bc3f")
+      }
+      else{
+        setBGcolor("ff9191")
+        setBordercolor("CC1034")
+      }
         const fetchData=async()=>{
         await fetch("https://disease.sh/v3/covid-19/historical/all?lastdays=120")
         .then((response)=>response.json())
@@ -76,6 +90,7 @@ function LineGraph({casesType="cases"}) {
             // console.log(chartData);
         })}
         fetchData()
+        {console.log(casesType);}
     },[casesType])
 
     return (
@@ -84,8 +99,8 @@ function LineGraph({casesType="cases"}) {
                 <Line 
                 data={{
                 datasets:[{
-                    backgroundColor:"#ff9191",
-                    borderColor: "#CC1034",
+                    backgroundColor:`#${bgcolor}`,
+                    borderColor: `#${bordercolor}`,
                     data:data,
                 }]
             }}

@@ -32,7 +32,7 @@ body{
 .app_right{
   display:flex;
   flex-direction: column;
-  width:25%
+  width:30%
 
 }
 
@@ -42,7 +42,16 @@ body{
 }
 .dropdown{
   background-color: white;
-  width: 10rem;
+  width: 15rem;
+}
+
+.search__dropdown{
+  display: flex;
+}
+
+.search__dropdown > img{
+  padding-right: 15px;
+  
 }
 
 /* .input__search{
@@ -61,6 +70,7 @@ body{
 
   .dropdown{
     margin-right: 100px;
+    width:10rem ;
   }
   .app_stats{
     flex-direction: column;
@@ -149,7 +159,7 @@ body{
 }
 
 .infoBox__cases{
-  color:#cc1034;
+  color:#ADFF2F;
   font-weight: 600;
   font-size:1.75rem;
   margin-bottom: 0.5rem;
@@ -168,9 +178,14 @@ body{
 
 .infoBox__red{
   border-color: red;
+  color: #cc1034;
 }
 .infoBox__cases__green{
   color: greenyellow !important;
+}
+.infoBox__Black{
+  border-color:#898C8A;
+  color: #545956 ;
 }
 
 .app_graph{
@@ -180,4 +195,10 @@ body{
 
 .app_map{
   width: 100%;
+}
+
+.Image__Size {
+  /* width:100%;
+  height: 100%; */
+  border-radius: 7px;
 }

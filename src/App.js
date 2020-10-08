@@ -82,7 +82,7 @@ function App() {
         {/* {console.log(countryInfo)} */}
         <div className="app_stats">
 
-          <InfoBox isRed active={casesType==="cases"} onClick={e=>setCasesType("cases")} title="Coronavirus Cases" cases={prettyPrint(countryInfo.todayCases)} total={prettyPrint(countryInfo.cases)}/>
+          <InfoBox isBlack active={casesType==="cases"} onClick={e=>setCasesType("cases")} title="Coronavirus Cases" cases={prettyPrint(countryInfo.todayCases)} total={prettyPrint(countryInfo.cases)}/>
           <InfoBox active={casesType==="recovered"}  onClick={e=>setCasesType("recovered")} title="Recovered" cases={prettyPrint(countryInfo.todayRecovered)} total={prettyPrint(countryInfo.recovered)}/>
           <InfoBox isRed active={casesType==="deaths"}  onClick={e=>setCasesType("deaths")} title="Deaths" cases={prettyPrint(countryInfo.todayDeaths)} total={prettyPrint(countryInfo.deaths)}/>
         </div>

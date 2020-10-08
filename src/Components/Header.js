@@ -33,7 +33,10 @@ function Header({onChange,countries}) {
                 getOptionLabel={(option)=>option.name}
                 renderOption={(option)=>(
                     <React.Fragment>
-                    <span value={option.value}>{option.name}</span>
+                    <div className= "search__dropdown">
+                        <img src={option.flag} width="40" height="30" />
+                        {option.name}
+                    </div>
                     </React.Fragment>
                 )}
             renderInput={(params)=>(
@@ -41,6 +44,7 @@ function Header({onChange,countries}) {
                 {...params}
                 label="World Wide"
                 variant="outlined"
+                placeholder="World Wide"
                 />
             )}
             />

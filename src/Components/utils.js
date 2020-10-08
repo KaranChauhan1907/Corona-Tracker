@@ -5,7 +5,7 @@ import "../App.css"
 
 const casesTypeColors = {
   cases: {
-    hex: "#CC1034",
+    hex: "#898C8A",
     multiplier: 500,
   },
   recovered: {
