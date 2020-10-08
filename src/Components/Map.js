@@ -6,13 +6,15 @@ import { showDataOnMap,centerMapcolor } from './utils'
 function Map({countries,casesType,countryInfo,center,zoom}) {
     return (
         <div className="map">
+            {console.log(center)}
             <LeafletMap center={center} zoom={zoom}>
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution='&copy; <a href="http://osm.org/copyright";>OpenStreetMap</a> contributors'
                 />
+                
                  {showDataOnMap(countries,casesType)}
-                {console.log(countryInfo)}
+                {/* {console.log(countryInfo)} */}
                 {
                     countryInfo.countryInfo &&  centerMapcolor(countryInfo,casesType) 
                 }
